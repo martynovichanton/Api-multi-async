@@ -14,7 +14,8 @@ async def token(user, password):
     async with aiohttp.ClientSession() as session:
         url = "https://" + device_ip + "/mgmt/shared/authn/login"
         crypto = Crypto()
-        payload = crypto.encrypt_random_key("{\n    \"username\":" + user + ",\n    \"password\":" + password + ",\n    \"loginProviderName\": \"tmos\"\n}")
+        #payload = crypto.encrypt_random_key("{\n    \"username\":" + user + ",\n    \"password\":" + password + ",\n    \"loginProviderName\": \"tmos\"\n}")
+        payload = crypto.encrypt_random_key(json.dumps({"username":user, "password":password, "loginProviderName":"tmos"}))
         headers = {
             'Content-Type': "application/json",
             'cache-control': "no-cache",
