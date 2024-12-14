@@ -24,7 +24,7 @@ async def iterate(RUN_ASYNC=False):
     fortiToken = mainCrypto.encrypt_random_key(getpass("Enter forti token"))
     
     now = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-    outputDir = "output" + "-" + now
+    outputDir = f"output/output-{now}"
     if not os.path.exists(f"{mainDir}/{outputDir}"):
         os.mkdir(f"{mainDir}/{outputDir}")
     
